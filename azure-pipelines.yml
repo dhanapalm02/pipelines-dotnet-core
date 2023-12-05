@@ -15,3 +15,10 @@ variables:
 steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
+
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'Azure Pass - Sponsorship(396bf849-abad-4962-b2a1-4beca5c4f4a2)'
+    appType: 'webAppLinux'
+    appName: 'pipeline-dotnet'
+    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
